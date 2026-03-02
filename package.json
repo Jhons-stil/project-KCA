@@ -1,0 +1,24 @@
+{
+  "name": "projek-ti",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.1.0",
+    "mysql2": "^3.18.2",
+    "nodemon": "^3.1.14",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.5"
+  }
+}
