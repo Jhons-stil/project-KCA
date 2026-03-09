@@ -6,7 +6,6 @@ const {
   cekError,
   cekId,
 } = require("../../middlewares/middlewareFinance/financeMiddleware.js");
-const authMidd = require("../../middlewares/authMiddleware/authMidd.js");
 
 const {
   getAllFinance,
@@ -15,17 +14,18 @@ const {
   updateFinance,
   deleteFinance,
 } = require("./controller.js");
+const verifyToken = require("../../middlewares/midlewareJwt/jwtMiddleware.js");
 router.get("/", getAllFinance);
 router.get("/:id", cekId, getFinanceById);
-router.post("/create", authMidd, cekFinance, cekError, createFinance);
+router.post("/create", verifyToken, cekFinance, cekError, createFinance);
 router.patch(
   "/update/:id",
-  authMidd,
+  verifyToken,
   cekId,
   cekFinance,
   cekError,
   updateFinance,
 );
-router.delete("/delete/:id", authMidd, cekId, deleteFinance);
+router.delete("/delete/:id", verifyToken, cekId, deleteFinance);
 
 module.exports = router;

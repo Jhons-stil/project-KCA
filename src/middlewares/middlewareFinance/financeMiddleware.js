@@ -1,18 +1,17 @@
 const { body, validationResult } = require("express-validator");
 const { resGagal } = require("../../payloads/payload.js");
-const {cariFinanceById} = require("../../http/finance/service.js")
-
+const { cariFinanceById } = require("../../http/finance/service.js");
 
 const cekId = async (req, res, next) => {
   try {
     const id = parseInt(req.params.id);
     const user = await cariFinanceById(id);
     if (!user) {
-        return resGagal(res, 404, "error", "Data tidak ditemukan");
+      return resGagal(res, 404, "error", "Data tidak ditemukan");
     }
     next();
-} catch (error) {
-   return resGagal(res, 500, "error", error.message)
+  } catch (error) {
+    return resGagal(res, 500, "error", error.message);
   }
 };
 
@@ -34,15 +33,9 @@ const cekError = (req, res, next) => {
 };
 
 const cekFinance = [
-  body("type")
-    .notEmpty()
-    .withMessage("Type wajib diisi")
-    .isIn(["Pemasukan", "Pengeluaran"])
-    .withMessage("Type harus Pemasukan atau Pengeluaran"),
+  body("type").notEmpty().withMessage("Type wajib diisi"),
 
-  body("category")
-    .notEmpty()
-    .withMessage("Category wajib diisi"),
+  body("category").notEmpty().withMessage("Category wajib diisi"),
 
   body("amount")
     .notEmpty()
@@ -67,5 +60,5 @@ const cekFinance = [
 module.exports = {
   cekFinance,
   cekError,
-  cekId
+  cekId,
 };
