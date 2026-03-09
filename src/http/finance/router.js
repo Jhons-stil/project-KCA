@@ -4,8 +4,10 @@ const { register, login, readUser } = require("./controller.js");
 const {
   cekFinance,
   cekError,
+  cekId
 } = require("../../middlewares/middlewareFinance/financeMiddleware.js");
 const authMidd = require("../../middlewares/authMiddleware/authMidd.js")
+
 
 
 const {
@@ -17,8 +19,9 @@ deleteFinance
 } =
 require("./controller.js")
 router.get("/", getAllFinance);
-router.get("/:id", getFinanceById);
+router.get("/:id",cekId,getFinanceById);
 router.post("/create",authMidd,cekFinance,cekError, createFinance);
-router.patch("/update/:id",authMidd,cekFinance,cekError, updateFinance)
-router.delete("/delete/:id", authMidd,deleteFinance)
+router.patch("/update/:id",authMidd,cekId,cekFinance,cekError, updateFinance)
+router.delete("/delete/:id", authMidd,cekId,deleteFinance)
+
 module.exports = router;

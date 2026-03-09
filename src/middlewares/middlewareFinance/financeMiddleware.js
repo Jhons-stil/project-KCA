@@ -1,5 +1,20 @@
 const { body, validationResult } = require("express-validator");
 const { resGagal } = require("../../payloads/payload.js");
+const {cariFinanceById} = require("../../http/finance/service.js")
+
+
+const cekId = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id);
+    const user = await cariFinanceById(id);
+    if (!user) {
+        return resGagal(res, 404, "error", "Data tidak ditemukan");
+    }
+    next();
+} catch (error) {
+   return resGagal(res, 500, "error", error.message)
+  }
+};
 
 const cekError = (req, res, next) => {
   const errors = validationResult(req);
@@ -50,4 +65,5 @@ const cekFinance = [
 module.exports = {
   cekFinance,
   cekError,
+  cekId
 };

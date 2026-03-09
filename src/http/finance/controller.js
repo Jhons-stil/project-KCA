@@ -82,7 +82,7 @@ const deleteFinance = async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         const data = await hapusFinance(id);
-        return resSukses(res, 201, "success", "Data berhasil dihapus",data)
+        return resSukses(res, 201, "success", "Data berhasil dihapus")
     } catch (error) {
         return resGagal(res, 500, "error", error.message);
     }
