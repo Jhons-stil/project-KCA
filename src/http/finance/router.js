@@ -13,9 +13,13 @@ const {
   createFinance,
   updateFinance,
   deleteFinance,
+  getFinanceByUser
 } = require("./controller.js");
+
 const verifyToken = require("../../middlewares/midlewareJwt/jwtMiddleware.js");
-router.get("/", getAllFinance);
+
+router.get("/",verifyToken, getAllFinance);
+router.get("/my-finance",verifyToken, getFinanceByUser)
 router.get("/:id", cekId, getFinanceById);
 router.post("/create", verifyToken, cekFinance, cekError, createFinance);
 router.patch(

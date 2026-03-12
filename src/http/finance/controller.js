@@ -4,7 +4,7 @@ const {
   cariFinanceById,
   ubahFinance,
   hapusFinance,
-  findUser,
+  findFinance,
 } = require("../finance/service.js")
 
 const { resSukses, resGagal } = require("../../payloads/payload.js");
@@ -88,7 +88,21 @@ const deleteFinance = async (req, res) => {
     }
 };
 
+const getFinanceByUser = async (req, res) => {
+    try {
+        const user_id = req.user.id;
 
+        const data = await findFinance(user_id);
+
+        if (!data || data.length === 0) {
+            return resGagal(res, 404, "error", "Data tidak ditemukan");
+        }
+
+        return resSukses(res, 200, "success", "Data finance user", data);
+    } catch (error) {
+        return resGagal(res, 500, "error", error.message);
+    }
+}
 
 module.exports = {
     getAllFinance,
@@ -96,4 +110,5 @@ module.exports = {
     createFinance,
     updateFinance,
     deleteFinance,
+    getFinanceByUser
 }

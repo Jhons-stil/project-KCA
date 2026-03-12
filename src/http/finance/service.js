@@ -25,8 +25,8 @@
       where: { id: id },
     });
   };
-  const findUser = async (user_id) => {
-    return await Finance.findOne({
+  const findFinance = async (user_id) => {
+    return await Finance.findAll({
       where: { user_id },
     });
   };
@@ -34,8 +34,8 @@
   module.exports = {
     tambahFinance,
     tampilKeuangan,
-    cariFinanceById,
+    cariFinanceById,  
     ubahFinance,
     hapusFinance,
-    findUser,
+    findFinance,
   };
