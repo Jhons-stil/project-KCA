@@ -6,6 +6,8 @@ Backend RESTful API untuk aplikasi manajemen pola hidup terpadu yang dirancang b
 
 - **Manajemen Keuangan (Financial Planner):** Membantu pengelolaan arus kas yang sehat melalui pencatatan pemasukan dan pengeluaran manual, yang sangat krusial bagi mereka yang baru memulai hidup mandiri atau membangun rumah tangga.
 
+- **Manajemen Kebiasaan (Habit Tracker):** Membantu pengguna membangun dan memantau kebiasaan positif harian melalui fitur pencatatan dan riwayat perkembangan.
+
 Tersedia di platform Website maupun Mobile, API ini dirancang untuk memastikan pola hidup pengguna tetap sehat, produktif, dan stabil secara finansial.
 
 Dibangun dengan **Node.js**, **Express.js**, dan **Sequelize ORM** dengan database **MySQL**.
